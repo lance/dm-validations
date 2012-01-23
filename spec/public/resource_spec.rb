@@ -102,4 +102,19 @@ describe 'DataMapper::Resource' do
       end
     end
   end
+
+  describe 'Marshal' do
+    before :all do
+      @resource.save
+    end
+
+    describe 'Marshal.load(Marshal.dump(resource))' do
+      it 'should not raise an error' do
+        Marshal.load(Marshal.dump(@resource)).should == @resource 
+      end
+    end
+  end
 end
+
+
+

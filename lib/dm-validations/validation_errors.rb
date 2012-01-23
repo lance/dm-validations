@@ -46,7 +46,7 @@ module DataMapper
 
       def initialize(resource)
         @resource = resource
-        @errors   = DataMapper::Validations::OrderedHash.new { |h,k| h[k] = [] }
+        @errors   = DataMapper::Validations::OrderedHash.new 
       end
 
       # Clear existing validation errors.
@@ -123,6 +123,8 @@ module DataMapper
       def [](property_name)
         if (property_errors = errors[property_name.to_sym])
           property_errors
+        else
+          []
         end
       end
 
